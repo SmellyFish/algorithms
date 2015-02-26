@@ -50,31 +50,31 @@ def contract_edge(tail_vertex, head_vertex, graph, debug):
     if debug:
         print "BEGIN contract_edge"
     # All the vertices that need to be updated to point to tail instead of head
-    arcs_to_update = graph[head_vertex]
+    edges_to_update = graph[head_vertex]
     # Remove the head vertex since it's being merged into the tail
     del graph[head_vertex]
-    # Remove all arcs that point from tail to head
-    tail_vertex_without_head_arcs = []
+    # Remove all edges that point from tail to head
+    tail_vertex_without_head_edges = []
     for vertex in graph[tail_vertex]:
         if vertex != head_vertex:
-            tail_vertex_without_head_arcs.append(vertex)
-    graph[tail_vertex] = tail_vertex_without_head_arcs
+            tail_vertex_without_head_edges.append(vertex)
+    graph[tail_vertex] = tail_vertex_without_head_edges
 
-    # Update all arcs currently pointing to the head vertex to point to tail instead
-    for arc_to_update in arcs_to_update:
+    # Update all edges currently pointing to the head vertex to point to tail instead
+    for edge_to_update in edges_to_update:
         if debug:
-            print "List before contraction: %s" % graph[arc_to_update]
-            print "Readjusting arc %d during contraction" % arc_to_update
+            print "List before contraction: %s" % graph[edge_to_update]
+            print "Readjusting edge %d during contraction" % edge_to_update
         # Ignore self loops
-        if arc_to_update == tail_vertex:
+        if edge_to_update == tail_vertex:
             if debug:
                 print "Self loop detected, skipping"
             continue
         else:
-            graph[tail_vertex].append(arc_to_update)
-            graph[arc_to_update] = [x if x != head_vertex else tail_vertex for x in graph[arc_to_update]]
+            graph[tail_vertex].append(edge_to_update)
+            graph[edge_to_update] = [x if x != head_vertex else tail_vertex for x in graph[edge_to_update]]
         if debug:
-            print "List after contraction: %s" % graph[arc_to_update]
+            print "List after contraction: %s" % graph[edge_to_update]
     return graph
 
 # APP LOGIC
