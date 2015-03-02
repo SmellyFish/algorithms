@@ -5,3 +5,4 @@ I went through the class with the lovely and talented [Matt Rathbun](https://git
 
 # Algorithms
 * [Karger's min-cut algorithm](https://github.com/SmellyFish/algorithms/tree/master/karger_graph_min_cut)
+* [Dijkstra's shortest-path algorithm](https://github.com/SmellyFish/algorithms/tree/master/dijkstra_shortest_path)
