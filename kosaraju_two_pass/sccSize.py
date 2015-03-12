@@ -80,7 +80,7 @@ def analyze_leader_data_in_graph_data(graph_meta_data):
     if len(sorted_leader_data) < number_of_leaders_to_return:
         return sorted_leader_data
     else:
-        return sorted_leader_data[-number_of_leaders_to_return:]
+        return sorted_leader_data[(-1 * number_of_leaders_to_return):]
 
 # Main function
 def main(graph, reverse_graph, debug=False):
@@ -100,10 +100,8 @@ def main(graph, reverse_graph, debug=False):
 
     return graph_meta_data
 
-graph, reverse_graph = setup_graph('scc_test2.txt')
+graph, reverse_graph = setup_graph('scc.txt')
 graph_meta_data = main(graph, reverse_graph, False)
 leader_data = analyze_leader_data_in_graph_data(graph_meta_data)
 
-# print "The graph is %s and the data is: %s" % (reverse_graph, data)
 print "Leader data is %s" % (leader_data)
-#print "Sample arcs are %s and %s" % (graph[2], graph[10])
